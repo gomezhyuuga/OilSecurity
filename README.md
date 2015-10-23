@@ -10,7 +10,9 @@ Proyecto para la materia de Seguridad Informática (tc) Ago-Dic 2015
 
 ### Setup
 1. Clone repo:
-		git clone asdas
+```
+git clone https://github.com/gomezhyuuga/OilSecurity.git
+```
 1. Load `schema.sql`, e.g.:
 		mysql -u root < db/schema.sql
 1. Edit tomcat `server.xml` file with the following changes:
