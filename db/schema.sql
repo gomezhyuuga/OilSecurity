@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `oilsec`.`comments` ;
 
 CREATE TABLE IF NOT EXISTS `oilsec`.`comments` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATETIME NOT NULL DEFAULT NOW(),
+  `date` DATETIME NOT NULL,
   `comment` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
