@@ -6,27 +6,21 @@
 package admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Item;
 
 /**
  *
  * @author gomezhyuuga
  */
-public class EditInventory extends HttpServlet {
+public class UpdateInventory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,8 +34,20 @@ public class EditInventory extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        // GET PARAMS
+        String type, location = "";
+        int quantity = 0;
+
         int id = Integer.parseInt(request.getParameter("id"));
-        String query = "SELECT * FROM inventory WHERE id = " + id + ";";
+        type = request.getParameter("type");
+        location = request.getParameter("location");
+        quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        String query = "UPDATE inventory SET "
+                + "`type`='" + type + "',"
+                + "`quantity`=" + quantity + ","
+                + "`location`='" + location + "'"
+                + "WHERE `id`= " + id + ";";
 
         Connection conn = null;
         try {
@@ -61,24 +67,12 @@ public class EditInventory extends HttpServlet {
 
         try {
             stmt = conn.createStatement();
-
-            if (stmt.execute(query)) {
-                rs = stmt.getResultSet();
-
-                System.out.println("QUERY");
-                rs.next();
-                String type = rs.getString("type");
-                String location = rs.getString("location");
-                int quantity = rs.getInt("quantity");
-                Item item = new Item(location, type, quantity, id);
-                System.out.println(item);
-
-                ServletContext sc = getServletContext();
-                RequestDispatcher rd = sc.getRequestDispatcher("/edit.jsp");
-                request.setAttribute("item", item);
-                rd.forward(request, response);
+            int res = stmt.executeUpdate(query);
+            if (res > 0) {
+                System.out.println("AGREGADO CORRECTAMENTE");
+                response.sendRedirect(request.getContextPath() + "/inventory");
             } else {
-                System.out.println("NO SE PUDO HACER QUERY");
+                System.out.println("NO SE MODOFICO NADA");
             }
 
         } catch (SQLException ex) {
@@ -87,7 +81,6 @@ public class EditInventory extends HttpServlet {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         } finally {
-            System.out.println("RELEASING");
             release(rs, stmt);
         }
     }
@@ -116,7 +109,7 @@ public class EditInventory extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -69,6 +69,7 @@ public class AddInventory extends HttpServlet {
             int res = stmt.executeUpdate(query);
             if (res > 0) {
                 System.out.println("AGREGADO CORRECTAMENTE");
+                response.sendRedirect(request.getContextPath() + "/inventory");
             } else {
                 System.out.println("NO SE AGREGO NADA");
             }

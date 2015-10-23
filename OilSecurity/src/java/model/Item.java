@@ -11,20 +11,20 @@ package model;
  */
 public class Item {
 
-    String location;
-    String type;
-    int quantity;
+    public String location;
+    public String type;
+    public int quantity;
+    public int id;
 
-    public Item(String location, String type, int quantity) {
+    public Item(String location, String type, int quantity, int id) {
         this.location = location;
         this.type = type;
         this.quantity = quantity;
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "Tipo: " + type + "\n"
-                + "Ubicación: " + location + "\n"
-                + "Cantidad: " + quantity + "\n";
+        return id + ": " + location + " | " + type + " | " + quantity;
     }
 }
