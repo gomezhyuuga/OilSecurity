@@ -39,7 +39,7 @@
 				<li><a href="#">Acerca de <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Productos y servicios</a></li>
 				<li><a href="#">Proveedores</a></li>
-				<li><a href="../admin/index.jsp">Inventario</a></li>
+				<li><a href="admin/index.jsp">Inventario</a></li>
 				<li><a href="comments.jsp">Comentarios</a></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
@@ -69,7 +69,7 @@
 					<h1>Bienvenido a OilMex!</h1>
 					<p>Oilmex, también conocida como Petromex, es una empresa dedicada a la extracción y manejo del petróleo dentro de la República Mexicana. Nuestro objetivo es que el petróleo sea utilizado de la mejor manera posible al mejor precio.</p>
 					<p><a class="btn btn-success btn-lg" href="#" role="button">Conocer más &raquo;</a></p>
-<p><a class="btn btn-primary btn-lg" href="../admin/index.jsp" role="button">Login &raquo;</a>
+<p><a class="btn btn-primary btn-lg" href="admin/" role="button">Login &raquo;</a>
 				</div>
 			</div>
 
