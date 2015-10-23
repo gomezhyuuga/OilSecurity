@@ -98,6 +98,9 @@ CREATE USER 'oiluser' IDENTIFIED BY 'oiluser';
 
 GRANT ALL ON `oilsec`.* TO 'oiluser';
 
+CREATE USER 'realm_access'@'localhost' IDENTIFIED BY 'realmpass';
+GRANT SELECT ON `tomcat_realm`.* TO 'realm_access'@'localhost';
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
