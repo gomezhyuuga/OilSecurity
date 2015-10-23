@@ -66,10 +66,11 @@ public class AddInventory extends HttpServlet {
 
         try {
             stmt = conn.createStatement();
-
-            if (stmt.execute(query)) {
-                rs = stmt.getResultSet();
-                System.out.println(rs);
+            int res = stmt.executeUpdate(query);
+            if (res > 0) {
+                System.out.println("AGREGADO CORRECTAMENTE");
+            } else {
+                System.out.println("NO SE AGREGO NADA");
             }
 
         } catch (SQLException ex) {
@@ -78,28 +79,31 @@ public class AddInventory extends HttpServlet {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         } finally {
-            // it is a good idea to release
-            // resources in a finally{} block
-            // in reverse-order of their creation
-            // if they are no-longer needed
+            release(rs, stmt);
+        }
+    }
 
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException sqlEx) {
-                } // ignore
+    private void release(ResultSet rs, Statement stmt) {
+        // it is a good idea to release
+        // resources in a finally{} block
+        // in reverse-order of their creation
+        // if they are no-longer needed
 
-                rs = null;
-            }
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException sqlEx) {
+            } // ignore
+            rs = null;
+        }
 
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException sqlEx) {
-                } // ignore
+        if (stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException sqlEx) {
+            } // ignore
 
-                stmt = null;
-            }
+            stmt = null;
         }
     }
 
