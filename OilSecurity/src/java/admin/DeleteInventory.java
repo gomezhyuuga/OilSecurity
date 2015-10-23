@@ -73,7 +73,6 @@ public class DeleteInventory extends HttpServlet {
             System.out.println("RELEASING");
             release(rs, stmt);
         }
-
     }
 
     private void release(ResultSet rs, Statement stmt) {
