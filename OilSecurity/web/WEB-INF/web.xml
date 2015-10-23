@@ -24,6 +24,10 @@
         <servlet-name>AddComment</servlet-name>
         <servlet-class>srv.AddComment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteInventory</servlet-name>
+        <servlet-class>admin.DeleteInventory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>AddComment</servlet-name>
         <url-pattern>/AddComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteInventory</servlet-name>
+        <url-pattern>/DeleteInventory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
