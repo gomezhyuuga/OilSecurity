@@ -1,7 +1,7 @@
 <%-- 
-    Document   : new
-    Created on : Oct 23, 2015, 11:37:00 AM
-    Author     : ivandiaz
+    Document   : comments
+    Created on : Oct 23, 2015, 2:26:42 PM
+    Author     : gomezhyuuga
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,13 +15,13 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Petromex - Agregar Nuevo</title>
+		<title>Petromex - Comentarios</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
-		<link href="../css/other.css" rel="stylesheet">
+		<link href="css/other.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -69,41 +69,70 @@
 	</div>
 	</nav>
 
-	<div class="container">
-		<div class="blog-header">
-			<h1>Agregar nuevo elemento</h1>
-		</div>
+		<div class="container">
+			<div class="blog-header">
+				<h1 class="blog-title">Comentarios</h1>
+				<p class="lead blog-description">Que tu opinión sea escuchada!</p>
+			</div>
 
-		<div class="row">
-				<div class="col-sm-11 blog-main">
+			<div class="row">
+				<div class="col-sm-8 blog-main">
 					<div class="blog-post">
-						<p>Llene el formulario que se presenta a continuación para añadir un nuevo elemento al inventario actual de la petroquímica.</p>
+						<p>Llene el formulario que se presenta a continuación para mandar sus sugerencias, quejas, o simplemente los comentarios que desee.</p>
 						<hr>
 
 						<form>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Tipo</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
+								<label for="exampleInputEmail1">Nombre</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca su Nombre">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Cantidad</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
+								<label for="exampleInputEmail1">Apellidos</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca sus Apellidos">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Ubicación</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca su Ubicación">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Correo Electrónico</label>
+								<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Introduzca su Dirección de Correo Electrónico">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Comentarios</label>
+								<textarea name="CommentSection" class="form-control" rows="5" placeholder="Introduzca sus Comentarios"></textarea>
 							</div>
 							<div class="checkbox">
 								<label>
-									<input type="checkbox">Accesible en cualquier ubicación.
+									<input type="checkbox">Quiero recibir notificaciones por Correo Electrónico
 								</label>
 							</div>
-							<button type="submit" class="btn btn-primary btn-lg">Agregar</button>
+							<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 						</form>
 					</div><!-- /.blog-post -->
 
 				</div><!-- /.blog-main -->
-	</div>
+
+				<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+					<div class="sidebar-module sidebar-module-inset">
+						<h4>Nota Adicional</h4>
+						<p>En OilMex nos preocupamos por tratar y mantener el petróleo a precios accesibles, mientras cumplimos con las normas de sustentabilidad, ecología, y cuidado al medio ambiente.</p>
+					</div>
+					<div class="sidebar-module">
+						<h4>Ligas de Interés</h4>
+						<ol class="list-unstyled">
+							<li><a href="#">PEMEX</a></li>
+							<li><a href="#">Secretaría del Medio Ambiente</a></li>
+							<li><a href="#">Gobierno de la República</a></li>
+							<li><a href="#">Gobierno del Estado de México</a></li>
+							<li><a href="#">Disposiciones Oficiales</a></li>
+						</ol>
+					</div>
+				</div><!-- /.blog-sidebar -->
+
+			</div><!-- /.row -->
+
+		</div><!-- /.container -->
 
 		<!-- Bootstrap core JavaScript
 		================================================== -->
