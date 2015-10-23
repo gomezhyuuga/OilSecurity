@@ -45,7 +45,7 @@
 				<li><a href="#">Acerca de <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Productos y servicios</a></li>
 				<li><a href="#">Proveedores</a></li>
-				<li><a href="#">Responsabilidad</a></li>
+				<li><a href="admin/index.jsp">Inventario</a></li
 				<li><a href="#">Comentarios</a></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">

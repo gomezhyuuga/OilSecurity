@@ -47,7 +47,7 @@
 				<li><a href="#">Productos y servicios</a></li>
 				<li><a href="#">Proveedores</a></li>
 				<li><a href="#">Responsabilidad</a></li>
-				<li><a href="#">Comentarios</a></li>
+				<li><a href="comments.jsp">Comentarios</a></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
