@@ -4,16 +4,22 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Petromex</title>
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-		<!-- Bootstrap -->
+		<title>Petromex - Inventario</title>
+
+		<!-- Bootstrap core CSS -->
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
-
+		<!-- Custom styles for this template -->
+		<link href="css/other.css" rel="stylesheet">
 	</head>
-	<body style="background: #eee;">
-	 
-<nav class="navbar navbar-inverse">
+
+	<body>
+
+	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -54,11 +60,60 @@
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>
-</nav>
+	</nav>
 
-	<!--slider -->
+	<div class="container">
+		<div class="blog-header">
+			<h1 class="blog-title">Productos y Servicios</h1>
+			<p class="lead blog-description">El Inventario Actual</p>
+		</div>
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<div class="row">
+			<div class="col-md-3 col-md-offset-9">
+				<button type="button" class="btn btn-primary">Agregar Nuevo</button>
+			</div>
+		</div>
+		<br>
+		<table class="table table-striped">
+			<tr>
+				<th>Tipo</th>
+				<th>Existencias</th>
+				<th>Ubicación</th>
+				<th>Acciones</th>
+			</tr>
+			<tr>
+				<td>Turbosina</td>
+				<td>3001</td>
+				<td>Almacén A</td>
+				<td>
+					<button type="button" class="btn btn-warning btn-sm">Editar</button>
+					<button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+				</td>
+			</tr>
+			<tr>
+				<td>Gas</td>
+				<td>4254</td>
+				<td>Almacén B</td>
+				<td>
+					<button type="button" class="btn btn-warning btn-sm">Editar</button>
+					<button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+				</td>
+			</tr>
+			<tr>
+				<td>Crudo</td>
+				<td>1001</td>
+				<td>Almacén C</td>
+				<td>
+					<button type="button" class="btn btn-warning btn-sm">Editar</button>
+					<button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

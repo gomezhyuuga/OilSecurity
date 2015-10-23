@@ -4,16 +4,22 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Petromex</title>
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-		<!-- Bootstrap -->
+		<title>Petromex - Agregar Nuevo</title>
+
+		<!-- Bootstrap core CSS -->
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
-
+		<!-- Custom styles for this template -->
+		<link href="css/other.css" rel="stylesheet">
 	</head>
-	<body style="background: #eee;">
-	 
-<nav class="navbar navbar-inverse">
+
+	<body>
+
+	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -54,11 +60,47 @@
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>
-</nav>
+	</nav>
 
-	<!--slider -->
+	<div class="container">
+		<div class="blog-header">
+			<h1>Agregar nuevo elemento</h1>
+		</div>
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<div class="row">
+				<div class="col-sm-11 blog-main">
+					<div class="blog-post">
+						<p>Llene el formulario que se presenta a continuación para añadir un nuevo elemento al inventario actual de la petroquímica.</p>
+						<hr>
+
+						<form>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Tipo</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Cantidad</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Ubicación</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox">Accesible en cualquier ubicación.
+								</label>
+							</div>
+							<button type="submit" class="btn btn-primary btn-lg">Agregar</button>
+						</form>
+					</div><!-- /.blog-post -->
+
+				</div><!-- /.blog-main -->
+	</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
