@@ -13,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,16 +63,21 @@ public class ListInventory extends HttpServlet {
 
             if (stmt.execute(query)) {
                 rs = stmt.getResultSet();
-                ArrayList<Item> items = new ArrayList<>();
+                List<Item> items = new ArrayList<>();
                 
                 System.out.println("QUERY");
                 while(rs.next()) {
                     String type = rs.getString("type");
                     String location = rs.getString("location");
                     int quantity = rs.getInt("quantity");
-                    items.add(new Item(location, type, quantity));
+                    items.add(new Item(location, type, quantity, rs.getInt("id")));
                 }
                 System.out.println(items);
+                
+                ServletContext sc = getServletContext();
+                RequestDispatcher rd = sc.getRequestDispatcher("/list.jsp");
+                request.setAttribute("list", items);
+                rd.forward(request, response);
             } else {
                 System.out.println("NO SE PUDO HACER QUERY");
             }

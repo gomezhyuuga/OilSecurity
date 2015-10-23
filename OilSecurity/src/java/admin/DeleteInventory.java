@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,6 +61,7 @@ public class DeleteInventory extends HttpServlet {
 
             if (stmt.executeUpdate(query) == 1) {
                 System.out.println("ELIMINADO CORRECTAMENTE");
+                response.sendRedirect(request.getContextPath() + "/inventory");
             } else {
                 System.out.println("NO SE ELIMINÓ NADA");
             }

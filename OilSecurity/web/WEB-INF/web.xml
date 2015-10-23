@@ -28,6 +28,10 @@
         <servlet-name>DeleteInventory</servlet-name>
         <servlet-class>admin.DeleteInventory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateInventory</servlet-name>
+        <servlet-class>admin.UpdateInventory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -37,24 +41,28 @@
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddInventory</servlet-name>
-        <url-pattern>/AddInventory</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditInventory</servlet-name>
-        <url-pattern>/EditInventory</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddComment</servlet-name>
         <url-pattern>/AddComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteInventory</servlet-name>
-        <url-pattern>/DeleteInventory</url-pattern>
+        <servlet-name>ListInventory</servlet-name>
+        <url-pattern>/inventory</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListInventory</servlet-name>
-        <url-pattern>/list</url-pattern>
+        <servlet-name>DeleteInventory</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddInventory</servlet-name>
+        <url-pattern>/new</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditInventory</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInventory</servlet-name>
+        <url-pattern>/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -62,11 +70,11 @@
         </session-timeout>
     </session-config>
     <security-constraint>
-        <display-name>Test</display-name>
+        <display-name>Admin</display-name>
         <web-resource-collection>
-            <web-resource-name>test</web-resource-name>
+            <web-resource-name>Admin pages</web-resource-name>
             <description>All HTTP</description>
-            <url-pattern>/Test</url-pattern>
+            <url-pattern>/test/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description>Only admin</description>

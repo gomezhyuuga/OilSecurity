@@ -80,23 +80,23 @@
 						<p>Llene el formulario que se presenta a continuación para añadir un nuevo elemento al inventario actual de la petroquímica.</p>
 						<hr>
 
-						<form>
+                        <form method="POST" action="${pageContext.request.contextPath}/new">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Tipo</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
+                                <input name="type"
+                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Cantidad</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
+								<input
+                                    name="quantity"
+                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Ubicación</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox">Accesible en cualquier ubicación.
-								</label>
+								<input
+                                    name="location"
+                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
 							</div>
 							<button type="submit" class="btn btn-primary btn-lg">Agregar</button>
 						</form>
