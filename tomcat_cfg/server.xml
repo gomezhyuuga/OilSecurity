@@ -1,0 +1,13 @@
+...
+      <!--
+      <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+             resourceName="UserDatabase"/>
+      -->
+...
+      <Realm  className="org.apache.catalina.realm.JDBCRealm"
+             driverName="com.mysql.jdbc.Driver"
+          connectionURL="jdbc:mysql://localhost:3306/oilsec"
+         connectionName="realm_access" connectionPassword="realmpass"
+              userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
+          userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
+...
