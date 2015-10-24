@@ -66,7 +66,7 @@
                                 <li><a href="#">Información</a></li>
                                 <li><a href="#">Acerca de</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Logout</a></li>
+                                ${pageContext.request.contextPath}
                             </ul>
                         </li>
                     </ul>

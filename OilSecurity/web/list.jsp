@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Oct 23, 2015, 11:33:44 AM
     Author     : gomezhyuuga
@@ -64,7 +64,7 @@
                                 <li><a href="#">Información</a></li>
                                 <li><a href="#">Acerca de</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Logout</a></li>
+                                ${pageContext.request.contextPath}
                             </ul>
                         </li>
                     </ul>
@@ -99,10 +99,10 @@
                     <td><%= i.quantity%></td>
                     <td><%= i.location%></td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/edit?id=<%= i.id %>" type="button" class="btn btn-warning btn-sm">
+                        <a href="${pageContext.request.contextPath}/edit?id=<%= i.id%>" type="button" class="btn btn-warning btn-sm">
                             Editar
                         </a>
-                            <a href="${pageContext.request.contextPath}/delete?id=<%= i.id %>" type="button" class="btn btn-danger btn-sm">
+                        <a href="${pageContext.request.contextPath}/delete?id=<%= i.id%>" type="button" class="btn btn-danger btn-sm">
                             Eliminar
                         </a>
                     </td>
