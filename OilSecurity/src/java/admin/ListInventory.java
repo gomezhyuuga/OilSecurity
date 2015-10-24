@@ -47,49 +47,48 @@ public class ListInventory extends HttpServlet {
             conn
                     = DriverManager.getConnection("jdbc:mysql://localhost/oilsec?"
                             + "user=oiluser&password=oiluser");
-        } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
+            // assume that conn is an already created JDBC connection (see previous examples)
+            Statement stmt = null;
+            ResultSet rs = null;
 
-        // assume that conn is an already created JDBC connection (see previous examples)
-        Statement stmt = null;
-        ResultSet rs = null;
+            try {
+                stmt = conn.createStatement();
 
-        try {
-            stmt = conn.createStatement();
+                if (stmt.execute(query)) {
+                    rs = stmt.getResultSet();
+                    List<Item> items = new ArrayList<>();
 
-            if (stmt.execute(query)) {
-                rs = stmt.getResultSet();
-                List<Item> items = new ArrayList<>();
-                
-                System.out.println("QUERY");
-                while(rs.next()) {
-                    String type = rs.getString("type");
-                    String location = rs.getString("location");
-                    int quantity = rs.getInt("quantity");
-                    items.add(new Item(location, type, quantity, rs.getInt("id")));
+                    System.out.println("QUERY");
+                    while (rs.next()) {
+                        String type = rs.getString("type");
+                        String location = rs.getString("location");
+                        int quantity = rs.getInt("quantity");
+                        items.add(new Item(location, type, quantity, rs.getInt("id")));
+                    }
+                    System.out.println(items);
+
+                    ServletContext sc = getServletContext();
+                    RequestDispatcher rd = sc.getRequestDispatcher("/list.jsp");
+                    request.setAttribute("list", items);
+                    rd.forward(request, response);
+                } else {
+                    System.out.println("NO SE PUDO HACER QUERY");
                 }
-                System.out.println(items);
-                
-                ServletContext sc = getServletContext();
-                RequestDispatcher rd = sc.getRequestDispatcher("/list.jsp");
-                request.setAttribute("list", items);
-                rd.forward(request, response);
-            } else {
-                System.out.println("NO SE PUDO HACER QUERY");
-            }
 
+            } catch (SQLException ex) {
+                // handle any errors
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+            } finally {
+                System.out.println("RELEASING");
+                release(rs, stmt);
+            }
         } catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        } finally {
-            System.out.println("RELEASING");
-            release(rs, stmt);
         }
     }
 
