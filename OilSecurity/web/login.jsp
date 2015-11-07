@@ -44,7 +44,7 @@ Author     : gomezhyuuga
                                     <div class="input-group input-group-lg">
                                         <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-star"></span></span>
                                         <input name="j_password"
-                                            type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+                                            type="password" class="form-control" placeholder="Contraseña" aria-describedby="sizing-addon1">
                                     </div>
 
                                 </div>
