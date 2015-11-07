@@ -84,19 +84,28 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">Tipo</label>
                                 <input name="type"
-                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
+                                    required
+                                    type="text" class="form-control"
+                                    id="exampleInputEmail1"
+                                    placeholder="Introduzca el nombre la substancia">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Cantidad</label>
 								<input
+                                    required
                                     name="quantity"
-                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
+                                    type="text" class="form-control"
+                                    id="exampleInputEmail1"
+                                    placeholder="Introduzca la cantidad a almacenar.">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Ubicación</label>
 								<input
+                                    required
                                     name="location"
-                                    type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
+                                    type="text" class="form-control"
+                                    id="exampleInputEmail1"
+                                    placeholder="Introduzca el almacén en el que se guardarán.">
 							</div>
 							<button type="submit" class="btn btn-primary btn-lg">Agregar</button>
 						</form>

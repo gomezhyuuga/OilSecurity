@@ -90,6 +90,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tipo</label>
                                 <input
+                                    required
                                     name="type"
                                     value="<%= item.type %>"
                                     type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el nombre la substancia">
@@ -97,6 +98,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Cantidad</label>
                                 <input
+                                    required
                                     name="quantity"
                                     value="<%= item.quantity %>"
                                     type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca la cantidad a almacenar.">
@@ -104,6 +106,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Ubicación</label>
                                 <input
+                                    required
                                     name="location"
                                     value="<%= item.location %>"
                                     type="text" class="form-control" id="exampleInputEmail1" placeholder="Introduzca el almacén en el que se guardarán.">
