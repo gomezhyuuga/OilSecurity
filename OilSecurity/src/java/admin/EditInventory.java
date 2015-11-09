@@ -14,12 +14,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import model.Item;
 
 /**
@@ -45,14 +50,15 @@ public class EditInventory extends HttpServlet {
 
         Connection conn = null;
         try {
-            conn
-                    = DriverManager.getConnection("jdbc:mysql://mysql/oilsec?"
-                            + "user=oiluser&password=oiluser");
+            DataSource ds = (DataSource) new InitialContext().lookup("java:/comp/env/jdbc/oilsec");
+            conn = ds.getConnection();
         } catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (NamingException ex) {
+            Logger.getLogger(EditInventory.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // assume that conn is an already created JDBC connection (see previous examples)

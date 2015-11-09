@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/OilSecurity">
-  <Realm className="org.apache.catalina.realm.CombinedRealm">
-    <Realm  className="org.apache.catalina.realm.JDBCRealm"
-           driverName="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://mysql:3306/oilsec"
-       connectionName="realm_access" connectionPassword="realmpass"
+    <Realm className="org.apache.catalina.realm.CombinedRealm">
+        <Realm  className="org.apache.catalina.realm.JDBCRealm"
+            driverName="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://mysql:3306/oilsec"
+            connectionName="realm_access" connectionPassword="realmpass"
             userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
-        userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
-  </Realm>
+            userRoleTable="tomcat_users_roles" roleNameCol="role_name" />
+    </Realm>
+    <Resource name="jdbc/oilsec" auth="Container" type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              username="oiluser" password="oiluser" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://mysql:3306/oilsec"/>
 </Context>
