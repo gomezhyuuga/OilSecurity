@@ -6,7 +6,7 @@ web:
     # - .:/code
     - ./OilSecurity/dist/OilSecurity.war:/usr/local/tomcat/webapps/ROOT.war
   links:
-    - mysql
+    - mysql:localhost
 mysql:
   container_name: s_mysql
   image: "mysql:5"
