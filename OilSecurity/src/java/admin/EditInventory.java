@@ -46,7 +46,7 @@ public class EditInventory extends HttpServlet {
         Connection conn = null;
         try {
             conn
-                    = DriverManager.getConnection("jdbc:mysql://localhost/oilsec?"
+                    = DriverManager.getConnection("jdbc:mysql://mysql/oilsec?"
                             + "user=oiluser&password=oiluser");
         } catch (SQLException ex) {
             // handle any errors

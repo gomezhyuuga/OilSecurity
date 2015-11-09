@@ -45,7 +45,7 @@ public class ListInventory extends HttpServlet {
         Connection conn = null;
         try {
             conn
-                    = DriverManager.getConnection("jdbc:mysql://localhost/oilsec?"
+                    = DriverManager.getConnection("jdbc:mysql://mysql/oilsec?"
                             + "user=oiluser&password=oiluser");
             // assume that conn is an already created JDBC connection (see previous examples)
             Statement stmt = null;
