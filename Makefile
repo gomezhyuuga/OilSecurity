@@ -1,3 +1,6 @@
+all: ant up
+ant:
+	ant -f /Users/gomezhyuuga/Development/jee/proyecto/OilSecurity -Dnb.internal.action.name=rebuild -DforceRedeploy=false -Dbrowser.context=/Users/gomezhyuuga/Development/jee/proyecto/OilSecurity clean dist
 up: Dockerfile
 	docker-compose up
 db_attach:
