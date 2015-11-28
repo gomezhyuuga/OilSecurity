@@ -1,3 +1,5 @@
+<%@ page session="true" %>
+<%@ page import="model.Item" %>
 <%@page import="java.util.List"%>
 <%@page import="model.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

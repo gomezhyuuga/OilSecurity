@@ -41,19 +41,22 @@ public class DeleteInventory extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         int id = Integer.parseInt(request.getParameter("id"));
         String query = "DELETE FROM inventory WHERE id = " + id + ";";
-
+        StringBuilder error = new StringBuilder();
+        boolean err = false;
+        
         Connection conn = null;
         try {
             DataSource ds = (DataSource) new InitialContext().lookup("java:/comp/env/jdbc/oilsec");
             conn = ds.getConnection();
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            err = true;
+            System.out.println(error);
         } catch (NamingException ex) {
             Logger.getLogger(DeleteInventory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,50 +64,26 @@ public class DeleteInventory extends HttpServlet {
         // assume that conn is an already created JDBC connection (see previous examples)
         Statement stmt = null;
         ResultSet rs = null;
-
+        
         try {
             stmt = conn.createStatement();
-
             if (stmt.executeUpdate(query) == 1) {
-                System.out.println("ELIMINADO CORRECTAMENTE");
                 response.sendRedirect(request.getContextPath() + "/inventory");
             } else {
-                System.out.println("NO SE ELIMINÓ NADA");
+                err = true;
+                error.append("NO SE PUDO ELIMINAR");
             }
-
+            
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        } finally {
-            System.out.println("RELEASING");
-            release(rs, stmt);
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            System.out.println(error);
+            err = true;
         }
-    }
-
-    private void release(ResultSet rs, Statement stmt) {
-        // it is a good idea to release
-        // resources in a finally{} block
-        // in reverse-order of their creation
-        // if they are no-longer needed
-
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-
-            rs = null;
-        }
-
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-
-            stmt = null;
+        
+        if (err) {
+            response.sendError(500, error.toString());
         }
     }
 

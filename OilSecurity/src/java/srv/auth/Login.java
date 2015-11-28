@@ -6,7 +6,6 @@
 package srv.auth;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,10 +29,13 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String username = request.getParameter("j_username");
+            String password = request.getParameter("j_password");
             request.login(request.getParameter("j_username"),
-                request.getParameter("j_password"));
-        } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/error.jsp");
+                    request.getParameter("j_password"));
+            response.sendRedirect(request.getContextPath() + "/inventory");
+        } catch (ServletException e) {
+            response.sendError(401, e.getMessage());
         }
     }
 

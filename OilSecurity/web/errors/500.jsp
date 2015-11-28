@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" isErrorPage="true"%>
 <!DOCTYPE HTML>
 <!--
     Solid State by HTML5 UP
@@ -21,43 +21,26 @@
         <div id="page-wrapper">
 
             <!-- Header -->
-            <%@ include file="partials/_header.jsp" %>
+            <%@ include file="/partials/_header.jsp" %>
 
             <!-- Menu -->
-            <%@ include file="partials/_menu.jsp" %>
+            <%@ include file="/partials/_menu.jsp" %>
 
             <!-- Wrapper -->
             <section id="wrapper">
                 <header>
                     <div class="inner">
-                        <h2>Inicio de sesión</h2>
+                        <h2>Oops! ERROR</h2>
+                        <p>
+                            <%= pageContext.getException()%>
+                        </p>
+                        <pre>URI: <%= pageContext.getErrorData().getRequestURI()%></pre>
+                        <pre>ServletName: <%= pageContext.getErrorData().getServletName()%></pre>
+<pre><% for (StackTraceElement e : pageContext.getException().getStackTrace()) {%>
+    <%= e%><% }%>
+</pre>
                     </div>
                 </header>
-
-                <!-- Content -->
-                <div class="wrapper">
-                    <div class="inner">
-                        <section>
-                            <form method="post" action="${pageContext.servletContext.contextPath}/Login">
-                                <div class="row uniform">
-                                    <div class="12u$">
-                                        <label for="j_username">Nombre de usuario</label>
-                                        <input type="text" name="j_username" id="j_username" required/>
-                                    </div>
-                                    <div class="12u$">
-                                        <label for="j_password">Contraseña</label>
-                                        <input type="password" name="j_password" id="j_password" required/>
-                                    </div>
-                                    <div class="12u$">
-                                        <ul class="actions">
-                                            <li><input type="submit" value="Iniciar sesión" class="special" /></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                </div>
             </section>
 
             <!-- Footer -->
@@ -68,6 +51,7 @@
                     </ul>
                 </div>
             </section>
+
         </div>
 
         <!-- Scripts -->
