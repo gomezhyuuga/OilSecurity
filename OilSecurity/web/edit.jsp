@@ -38,22 +38,22 @@
                         <h3 class="major">Agregar un nuevo Elemento</h3>
                         <p>Llene el formulario que se presenta a continuación para añadir un nuevo elemento al inventario actual de la petroquímica.</p>
                         <form method="POST" action="${pageContext.request.contextPath}/update">
-                            <input type="hidden" name="id" value="<%= item.id %>" />
+                            <input type="hidden" name="id" value="<%= item.id%>" />
                             <div class="row uniform">
                                 <div class="12u$">
-                                    <label for="demo-name">Tipo</label>
+                                    <label for="type">Tipo</label>
                                     <input type="text" name="type" id="type"
-                                           value="<%= item.type %>"/>
+                                           value="<%= item.type%>"/>
                                 </div>
                                 <div class="12u$">
-                                    <label for="demo-email">Cantidad</label>
-                                    <input type="email" name="quantity" id="quantity"
-                                           value="<%= item.quantity %>" />
+                                    <label for="quantity">Cantidad</label>
+                                    <input type="text" name="quantity" id="quantity"
+                                           value="<%= item.quantity%>" />
                                 </div>
                                 <div class="12u$">
-                                    <label for="demo-email">Ubicación</label>
+                                    <label for="location">Ubicación</label>
                                     <input type="text" name="location" id="location"
-                                           value="<%= item.location %>" />
+                                           value="<%= item.location%>" />
                                 </div>
                                 <div class="12u$">
                                     <ul class="actions">

@@ -37,7 +37,8 @@
                         <h1>Productos y Servicios</h1>
                         <p>El inventario Actual</p>
                         <p>
-                            <a href="new.html" class="button special">Agregar Nuevo</a>
+                            <a href="${pageContext.servletContext.contextPath}/new.jsp"
+                               class="button special">Agregar Nuevo</a>
                         </p>
                         <div class="table-wrapper">
                             <table class="alt">

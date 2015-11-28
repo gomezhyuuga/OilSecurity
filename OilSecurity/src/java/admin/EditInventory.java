@@ -48,17 +48,23 @@ public class EditInventory extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         String query = "SELECT * FROM inventory WHERE id = " + id + ";";
 
+        StringBuilder error = new StringBuilder();
+        boolean err = false;
+
         Connection conn = null;
         try {
             DataSource ds = (DataSource) new InitialContext().lookup("java:/comp/env/jdbc/oilsec");
             conn = ds.getConnection();
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            err = true;
+            System.out.println(error);
         } catch (NamingException ex) {
             Logger.getLogger(EditInventory.class.getName()).log(Level.SEVERE, null, ex);
+            err = true;
+            error.append(ex.getMessage());
         }
 
         // assume that conn is an already created JDBC connection (see previous examples)
@@ -84,41 +90,19 @@ public class EditInventory extends HttpServlet {
                 request.setAttribute("item", item);
                 rd.forward(request, response);
             } else {
-                System.out.println("NO SE PUDO HACER QUERY");
+                err = true;
+                error.append("NO SE PUDO EDITAR");
             }
 
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        } finally {
-            System.out.println("RELEASING");
-            release(rs, stmt);
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            System.out.println(error);
+            err = true;
         }
-    }
-
-    private void release(ResultSet rs, Statement stmt) {
-        // it is a good idea to release
-        // resources in a finally{} block
-        // in reverse-order of their creation
-        // if they are no-longer needed
-
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-            rs = null;
-        }
-
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-
-            stmt = null;
+        if (err) {
+            response.sendError(500, error.toString());
         }
     }
 

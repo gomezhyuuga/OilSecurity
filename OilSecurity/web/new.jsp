@@ -36,15 +36,15 @@
                         <form method="POST" action="${pageContext.request.contextPath}/new">
                             <div class="row uniform">
                                 <div class="12u$">
-                                    <label for="demo-name">Tipo</label>
+                                    <label for="type">Tipo</label>
                                     <input type="text" name="type" id="type" value="" />
                                 </div>
                                 <div class="12u$">
-                                    <label for="demo-email">Cantidad</label>
-                                    <input type="email" name="quantity" id="quantity" value="" />
+                                    <label for="quantity">Cantidad</label>
+                                    <input type="text" name="quantity" id="quantity" value="" />
                                 </div>
                                 <div class="12u$">
-                                    <label for="demo-email">Ubicación</label>
+                                    <label for="location">Ubicación</label>
                                     <input type="text" name="location" id="location" value="" />
                                 </div>
                                 <div class="12u$">

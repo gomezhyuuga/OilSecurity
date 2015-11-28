@@ -53,17 +53,22 @@ public class AddInventory extends HttpServlet {
         String query = "INSERT INTO inventory (`id`, `type`, `quantity`, `location`)"
                 + "VALUES (DEFAULT, '" + type + "', " + quantity + ", '" + location + "');";
 
+        StringBuilder error = new StringBuilder();
+        boolean err = false;
+
         Connection conn = null;
         try {
             DataSource ds = (DataSource) new InitialContext().lookup("java:/comp/env/jdbc/oilsec");
             conn = ds.getConnection();
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            err = true;
+            System.out.println(error);
         } catch (NamingException ex) {
             Logger.getLogger(AddInventory.class.getName()).log(Level.SEVERE, null, ex);
+            error.append(ex.getMessage());
         }
 
         // assume that conn is an already created JDBC connection (see previous examples)
@@ -74,43 +79,20 @@ public class AddInventory extends HttpServlet {
             stmt = conn.createStatement();
             int res = stmt.executeUpdate(query);
             if (res > 0) {
-                System.out.println("AGREGADO CORRECTAMENTE");
                 response.sendRedirect(request.getContextPath() + "/inventory");
             } else {
-                System.out.println("NO SE AGREGO NADA");
+                err = true;
+                error.append("NO SE PUDO AGREGAR");
             }
-
         } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        } finally {
-            release(rs, stmt);
+            error.append(ex.getMessage()).append("\n");
+            error.append(ex.getSQLState()).append("\n");
+            error.append(ex.getErrorCode()).append("\n");
+            System.out.println(error);
+            err = true;
         }
-    }
-
-    private void release(ResultSet rs, Statement stmt) {
-        // it is a good idea to release
-        // resources in a finally{} block
-        // in reverse-order of their creation
-        // if they are no-longer needed
-
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-            rs = null;
-        }
-
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException sqlEx) {
-            } // ignore
-
-            stmt = null;
+        if (err) {
+            response.sendError(500, error.toString());
         }
     }
 
